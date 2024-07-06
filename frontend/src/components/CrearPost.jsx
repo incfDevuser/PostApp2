@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css"; // Importar estilos de Toastify
+
 const CrearPost = () => {
-  //Setear las variables para useState
   const [titulo, setTitulo] = useState("");
   const [img, setImg] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -13,7 +13,7 @@ const CrearPost = () => {
     const nuevoPost = { titulo, img, descripcion };
     try {
       const response = await axios.post(
-        "http://localhost:4000/posts",
+        "http://localhost:5000/posts",
         nuevoPost
       );
       toast.success("Post creado correctamente");
@@ -25,6 +25,7 @@ const CrearPost = () => {
       console.error("Error al crear el post", error);
     }
   };
+
   return (
     <div className="flex flex-col justify-center border-2 rounded-xl items-center p-7">
       <p className="font-semibold text-xl text-center">Agregar nuevo post</p>
@@ -42,7 +43,7 @@ const CrearPost = () => {
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
             required
-            className="border-2 border-gray-300  rounded-lg w-96 h-11 p-2"
+            className="border-2 border-gray-300 rounded-lg w-96 h-11 p-2"
             placeholder="Titulo"
           />
         </div>
@@ -72,7 +73,7 @@ const CrearPost = () => {
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
             required
-            className="border-2 border-gray-300 rounded-lg w-96  h-24 p-2"
+            className="border-2 border-gray-300 rounded-lg w-96 h-24 p-2"
             placeholder="Descripcion"
           ></textarea>
         </div>
